@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mindful Student: Stress Relief Starter Pack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Noto+Sans+Sinhala:wght@400;600&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3eefb;--surface:#fdfbff;--ink:#2b2148;--muted:#65598a;--line:#dcd0f0;--accent:#7a56c8;--accent-ink:#fff;--warm:#f2b45a;--red:#c8553d;--green:#3d9a6b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1430;--surface:#261d42;--ink:#ece6fb;--muted:#b3a6d8;--line:#3b2f61;--accent:#b79bf2;--accent-ink:#1b1430;--warm:#f2b45a}}
+:root[data-theme="dark"]{--bg:#1b1430;--surface:#261d42;--ink:#ece6fb;--muted:#b3a6d8;--line:#3b2f61;--accent:#b79bf2;--accent-ink:#1b1430;--warm:#f2b45a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.75 "Noto Sans Sinhala","Noto Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Fraunces","Noto Sans Sinhala",Georgia,serif;line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(2.2rem,6vw,3.8rem);font-weight:700}
+h2{font-size:clamp(1.5rem,3.5vw,2.1rem)}
+h3{font-size:1.2rem}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--warm);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--muted);padding:6px 14px;border-radius:99px;font-size:.95rem}
+nav a:hover{background:var(--surface);color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:56px 0 40px}
+.sub{color:var(--muted);font-size:1.15rem;max-width:34em}
+blockquote{margin:24px 0;padding-left:16px;border-left:4px solid var(--warm);font-family:"Fraunces",serif;font-size:1.2rem;font-style:italic}
+.breath{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+.orb-box{width:min(300px,80vw);aspect-ratio:1;display:grid;place-items:center;position:relative}
+.orb{position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--warm),var(--accent));transition:transform 4s ease-in-out;transform:scale(.6)}
+.ring{position:absolute;inset:0;border-radius:50%;border:2px dashed var(--line)}
+.orb-text{position:relative;font-family:"Fraunces",serif;font-size:1.5rem;color:#2b2148;font-weight:700;text-align:center;line-height:1.3}
+.orb-text small{display:block;font:600 1rem "Noto Sans Sinhala",sans-serif}
+button{font:600 1rem/1 "Noto Sans Sinhala","Noto Sans",sans-serif;cursor:pointer;border:0;border-radius:99px;padding:14px 26px;background:var(--accent);color:var(--accent-ink)}
+button.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+section{padding:48px 0;border-top:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.steps{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+.steps li{display:flex;gap:14px;align-items:baseline}
+.steps b{font-family:"Fraunces",serif;font-size:1.6rem;color:var(--accent);min-width:1.4em}
+.sense{display:grid;gap:10px;margin-top:14px}
+.sense div{display:flex;gap:14px;align-items:center;padding:10px 14px;background:var(--bg);border-radius:12px}
+.sense b{font-family:"Fraunces",serif;font-size:1.8rem;color:var(--warm);width:1.2em;text-align:center}
+.sense small{display:block;color:var(--muted)}
+.moods{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 20px}
+.mood{background:var(--bg);color:var(--ink);border:2px solid var(--line)}
+.mood[aria-pressed="true"]{border-color:var(--ink);background:var(--surface)}
+label.chk{display:flex;gap:12px;align-items:flex-start;padding:8px 0;cursor:pointer}
+input[type=checkbox]{width:22px;height:22px;accent-color:var(--accent);flex:none;margin-top:4px}
+input[type=text],input[type=date],textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:10px 14px}
+.task{display:grid;grid-template-columns:auto 1fr 120px;gap:10px;align-items:center;margin-bottom:10px}
+textarea{min-height:110px;resize:vertical}
+.prompt{margin-bottom:22px}
+.prompt p{margin:0 0 4px;font-weight:600}.prompt small{color:var(--muted);display:block;margin-bottom:8px}
+.links{display:grid;gap:12px;margin:14px 0 0;padding:0;list-style:none}
+.links a{display:flex;justify-content:space-between;gap:12px;padding:14px 18px;background:var(--bg);border-radius:14px;text-decoration:none;color:var(--ink);font-weight:600}
+.links a span{color:var(--muted);font-weight:400}
+.note{color:var(--muted);font-size:.9rem}
+dialog{border:0;border-radius:24px;padding:28px 24px;max-width:min(380px,92vw);text-align:center;background:var(--surface);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(27,20,48,.55)}
+dialog svg{width:100%;max-width:280px;height:auto;display:block;margin:0 auto}
+dialog h3{margin:8px 0 4px}dialog p{margin:0 0 18px;color:var(--muted)}
+.face{font-size:2.4rem;display:inline-block;animation:hop 1.2s .9s ease-in-out 2}
+.stem{fill:none;stroke:#3d9a6b;stroke-width:4;stroke-linecap:round;stroke-dasharray:320;stroke-dashoffset:320;animation:draw 1s ease-out forwards}
+.bloom{transform-box:fill-box;transform-origin:center;transform:scale(0);animation:bloom .8s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d)}
+.wrap-paper{opacity:0;animation:fade .6s .5s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes bloom{to{transform:scale(1)}}
+@keyframes fade{to{opacity:1}}
+@keyframes hop{50%{transform:translateY(-10px) rotate(-6deg)}}
+@media (prefers-reduced-motion:reduce){.stem{animation:none;stroke-dashoffset:0}.bloom{animation:none;transform:none}.wrap-paper{animation:none;opacity:1}.face{animation:none}}
+.scene{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center}
+.scene svg{width:100%;max-width:520px;height:auto}
+.scene.paused *{animation-play-state:paused!important}
+.bop{transform-box:fill-box;transform-origin:50% 100%;animation:bop .8s ease-in-out infinite alternate}
+.wag{transform-box:fill-box;transform-origin:0% 100%;animation:wag .5s ease-in-out infinite alternate}
+.dance{transform-box:fill-box;transform-origin:50% 100%;animation:dance .5s ease-in-out infinite alternate}
+.note1{font-size:26px;fill:var(--accent);opacity:0;animation:floatup 3s ease-out infinite}
+@keyframes bop{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}
+@keyframes wag{from{transform:rotate(-14deg)}to{transform:rotate(14deg)}}
+@keyframes dance{from{transform:translateY(0) rotate(-6deg)}to{transform:translateY(-14px) rotate(6deg)}}
+@keyframes floatup{0%{opacity:0;transform:translateY(0)}20%{opacity:1}100%{opacity:0;transform:translateY(-70px)}}
+@media (prefers-reduced-motion:reduce){.bop,.wag,.dance,.note1{animation:none;opacity:1}}
+.chat{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+.log{height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px 2px 12px}
+.msg{max-width:85%;padding:10px 14px;border-radius:16px;white-space:pre-wrap;word-wrap:break-word}
+.msg.bot{background:var(--bg);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.me{background:var(--accent);color:var(--accent-ink);align-self:flex-end;border-bottom-right-radius:4px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 12px}
+.chips button{padding:8px 14px;font-size:.9rem}
+.send{display:flex;gap:10px;align-items:flex-end}
+.send textarea{min-height:52px;height:52px}
+.help{margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--bg);font-size:.92rem;color:var(--muted)}
+.catwrap{display:flex;align-items:center;gap:18px;margin-bottom:14px}
+.catwrap svg{width:170px;flex:none}
+.bubble{position:relative;background:var(--bg);padding:16px 18px;border-radius:18px;min-height:96px;flex:1;white-space:pre-wrap}
+.bubble::before{content:"";position:absolute;left:-10px;top:36px;border:10px solid transparent;border-right-color:var(--bg);border-left:0}
+.head{transform-box:fill-box;transform-origin:50% 100%}
+.talking .head{animation:nod .5s ease-in-out infinite alternate}
+.talking .mouth{animation:yap .22s ease-in-out infinite alternate}
+.mouth{transform-box:fill-box;transform-origin:center}
+@keyframes yap{from{transform:scaleY(1)}to{transform:scaleY(4.5)}}
+@keyframes nod{from{transform:rotate(-2deg)}to{transform:rotate(2deg)}}
+@media (max-width:560px){.catwrap{flex-direction:column;text-align:left}.bubble::before{display:none}}
+@media (prefers-reduced-motion:reduce){.talking .head,.talking .mouth{animation:none}}
+footer{padding:36px 0 48px;color:var(--muted);text-align:center;border-top:1px solid var(--line)}
+@media (max-width:760px){.hero,.grid{grid-template-columns:1fr}.task{grid-template-columns:auto 1fr}.task input[type=text]:last-child{grid-column:2}}
+@media (prefers-reduced-motion:reduce){.orb{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav aria-label="Sections"><div class="wrap">
+<a href="#breathe">Relief techniques</a><a href="#tracker">Daily tracker</a><a href="#journal">Journal</a><a href="#music">Music corner</a><a href="#chat">Talk it out</a><a href="#resources">Resources</a>
+</div></nav>
+
+<main class="wrap">
+<header class="hero">
+<div>
+<h1>Mindful Student</h1>
+<p class="sub"><strong>Stress Relief Starter Pack.</strong> A practical toolkit for academic success and mental well-being.</p>
+<blockquote>Stress is not something you should fight; it is something you learn to navigate.</blockquote>
+<p>විශ්වවිද්‍යාල ජීවිතයේ Assignment, Exams සහ Deadlines එක්ක Stress වෙන එක සාමාන්‍ය දෙයක්. මේ Starter Pack එක හදලා තියෙන්නේ ඔයාගේ හිත නිවාගන්න, වැඩ පිළිවෙළකට කරගන්න සහ Mindful ජීවිතයක් පටන්ගන්න උදව් වෙන්න.</p>
+</div>
+<div class="breath" id="breathe" aria-live="polite">
+<div class="orb-box"><div class="ring"></div><div class="orb" id="orb"></div>
+<div class="orb-text" id="orbText">4-7-8<small>ආරම්භ කරන්න</small></div></div>
+<button id="go">Start breathing</button>
+<span class="note" id="count">Rounds done: 0 of 4</span>
+</div>
+</header>
+
+<section aria-labelledby="t">
+<h2 id="t">Quick stress relief techniques</h2>
+<div class="grid">
+<article class="card">
+<h3>The 4-7-8 Breathing Technique</h3>
+<p class="note">ක්ෂණිකව හිත සන්සුන් කරගන්න</p>
+<ol class="steps" style="list-style:none">
+<li><b>4</b><span>තත්පර 4ක් හුස්ම ඇතුළට ගන්න.</span></li>
+<li><b>7</b><span>තත්පර 7ක් හුස්ම තද කරගෙන ඉන්න.</span></li>
+<li><b>8</b><span>තත්පර 8ක් තොල් පොඩි කරලා හෙමින් හුස්ම පිට කරන්න.</span></li>
+</ol>
+<p class="note">4-5 වතාවක් මෙය කරන්න. උඩ තියෙන රවුම භාවිතා කරන්න.</p>
+</article>
+<article class="card">
+<h3>5-4-3-2-1 Grounding Method</h3>
+<p class="note">Overthinking නතර කරන්න</p>
+<div class="sense">
+<div><b>5</b><span>දේවල් 5ක් වටපිට බලලා හිතින් නම් කරන්න<small>things you can see</small></span></div>
+<div><b>4</b><span>දේවල් 4ක් අල්ලලා බලන්න/ස්පර්ශ කරන්න<small>things you can touch</small></span></div>
+<div><b>3</b><span>දේවල් 3ක් අහගෙන ඉන්න<small>things you can hear</small></span></div>
+<div><b>2</b><span>දේවල් 2ක සුවඳ විඳින්න<small>things you can smell</small></span></div>
+<div><b>1</b><span>දෙයක් 1ක් රහ බලන්න නැත්නම් හොඳ දෙයක් හිතන්න<small>thing you can taste/feel</small></span></div>
+</div>
+</article>
+</div>
+</section>
+
+<section id="tracker" aria-labelledby="tr">
+<h2 id="tr">Daily study &amp; stress tracker</h2>
+<div class="card">
+<label for="date"><strong>Date</strong></label>
+<input type="date" id="date" style="max-width:240px;margin:6px 0 18px">
+<p style="margin:0"><strong>Mood today</strong></p>
+<div class="moods" role="group" aria-label="Mood today">
+<button class="mood" data-m="relaxed" aria-pressed="false">🟢 Relaxed</button>
+<button class="mood" data-m="okay" aria-pressed="false">🟡 Okay</button>
+<button class="mood" data-m="stressed" aria-pressed="false">🔴 Stressed</button>
+</div>
+<h3>Priority tasks <span class="note">(අද අනිවාර්යයෙන් කළ යුතු වැඩ)</span></h3>
+<div class="task"><input type="checkbox" aria-label="Task 1 done" data-k="d1"><input type="text" placeholder="Task 1" aria-label="Task 1" data-k="t1"><input type="text" placeholder="Time block" aria-label="Time block 1" data-k="b1"></div>
+<div class="task"><input type="checkbox" aria-label="Task 2 done" data-k="d2"><input type="text" placeholder="Task 2" aria-label="Task 2" data-k="t2"><input type="text" placeholder="Time block" aria-label="Time block 2" data-k="b2"></div>
+<div class="task"><input type="checkbox" aria-label="Task 3 done" data-k="d3"><input type="text" placeholder="Task 3" aria-label="Task 3" data-k="t3"><input type="text" placeholder="Time block" aria-label="Time block 3" data-k="b3"></div>
+<h3 style="margin-top:22px">Self-care checklist</h3>
+<label class="chk"><input type="checkbox" data-k="c1">වතුර ලීටර් 2ක් පෙව්වාද?</label>
+<label class="chk"><input type="checkbox" data-k="c2">පැය 7-8ක් නිදාගත්තාද?</label>
+<label class="chk"><input type="checkbox" data-k="c3">විනාඩි 15ක් ඇවිදින්න/එළිමහනට ගියාද?</label>
+<label class="chk"><input type="checkbox" data-k="c4">Screen එකෙන් අයින් වෙලා පොඩි Break එකක් ගත්තාද?</label>
+<p class="note">Your entries are saved only in this browser.</p>
+<button class="ghost" id="clear">Clear today's tracker</button>
+</div>
+</section>
+
+<section id="journal" aria-labelledby="j">
+<h2 id="j">Mindfulness journal prompts</h2>
+<div class="card">
+<div class="prompt"><p>අද දවසේ මගේ සිතුවිලි අවුල් කළ ප්‍රධාන දේ මොකක්ද?</p><small>Write it down to release it</small><textarea data-k="j1" aria-label="Journal prompt 1"></textarea></div>
+<div class="prompt"><p>ඒ වෙනුවෙන් මට පාලනය කරන්න පුළුවන් දේ මොකක්ද?</p><small>And what is beyond my control?</small><textarea data-k="j2" aria-label="Journal prompt 2"></textarea></div>
+<div class="prompt"><p>අද දවසේ මම ස්තුතිවන්ත වන/සතුටු වුණු පුංචි දේවල් 3ක්:</p><textarea data-k="j3" aria-label="Three small things I am grateful for"></textarea></div>
+<button id="saveJ">Save journal</button>
+<span class="note" id="savedAt" style="margin-left:12px"></span>
+</div>
+<dialog id="bouquet" aria-labelledby="bt">
+<svg viewBox="0 0 300 300" role="img" aria-label="An animated bouquet of flowers">
+<defs><symbol id="fl" viewBox="-30 -30 60 60" overflow="visible">
+<g fill="currentColor"><ellipse cy="-15" rx="8" ry="14"/><ellipse cy="-15" rx="8" ry="14" transform="rotate(60)"/><ellipse cy="-15" rx="8" ry="14" transform="rotate(120)"/><ellipse cy="-15" rx="8" ry="14" transform="rotate(180)"/><ellipse cy="-15" rx="8" ry="14" transform="rotate(240)"/><ellipse cy="-15" rx="8" ry="14" transform="rotate(300)"/></g>
+<circle r="8" fill="#f2b45a"/></symbol></defs>
+<path class="stem" d="M150 285 C150 200 150 150 150 95"/>
+<path class="stem" d="M150 285 C140 220 110 170 88 125"/>
+<path class="stem" d="M150 285 C160 220 190 170 212 125"/>
+<path class="stem" d="M150 285 C130 240 90 210 62 172"/>
+<path class="stem" d="M150 285 C170 240 210 210 238 172"/>
+<g class="bloom" style="--d:.8s;color:#e86a8a"><use href="#fl" x="120" y="65" width="60" height="60"/></g>
+<g class="bloom" style="--d:1s;color:#f2b45a"><use href="#fl" x="58" y="95" width="60" height="60"/></g>
+<g class="bloom" style="--d:1.15s;color:#b48ae0"><use href="#fl" x="182" y="95" width="60" height="60"/></g>
+<g class="bloom" style="--d:1.3s;color:#ff9f7a"><use href="#fl" x="32" y="142" width="60" height="60"/></g>
+<g class="bloom" style="--d:1.45s;color:#6ec6e8"><use href="#fl" x="208" y="142" width="60" height="60"/></g>
+<path class="wrap-paper" d="M105 215 L195 215 L172 292 L128 292 Z" fill="#f2b45a"/>
+<path class="wrap-paper" d="M128 292 L172 292 L150 300 Z" fill="#e0993a"/>
+</svg>
+<div class="face" aria-hidden="true">😊</div>
+<h3 id="bt">ලස්සනයි! Journal එක save වුණා</h3>
+<p>අද ඔයා ඔයාගේ හිතට වෙලාවක් දුන්නා. ඒක ලොකු දෙයක්. 🌸</p>
+<button id="closeB">Thanks</button>
+</dialog>
+</section>
+
+<section id="music" aria-labelledby="m">
+<h2 id="m">Music corner</h2>
+<div class="scene" id="scene">
+<svg viewBox="0 0 420 240" role="img" aria-label="A cat wearing headphones head-bobbing while a little mouse dances beside it">
+<ellipse cx="210" cy="222" rx="190" ry="10" fill="var(--line)"/>
+<text class="note1" x="120" y="70" style="animation-delay:0s">♪</text>
+<text class="note1" x="250" y="60" style="animation-delay:1s">♫</text>
+<text class="note1" x="190" y="45" style="animation-delay:2s">♬</text>
+<path class="wag" d="M118 190 C70 190 60 140 88 128" fill="none" stroke="#9c86c9" stroke-width="12" stroke-linecap="round"/>
+<ellipse cx="160" cy="185" rx="48" ry="38" fill="#b7a4de"/>
+<ellipse cx="160" cy="200" rx="26" ry="22" fill="#e7def7"/>
+<g class="bop">
+<polygon points="115,85 122,48 145,72" fill="#b7a4de"/><polygon points="205,85 198,48 175,72" fill="#b7a4de"/>
+<circle cx="160" cy="100" r="44" fill="#b7a4de"/>
+<path d="M136 100 q8 -9 16 0 M168 100 q8 -9 16 0" fill="none" stroke="#2b2148" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M153 118 q7 8 14 0" fill="none" stroke="#2b2148" stroke-width="3" stroke-linecap="round"/>
+<ellipse cx="160" cy="112" rx="5" ry="3.5" fill="#e86a8a"/>
+<circle cx="132" cy="114" r="7" fill="#f4a9c0" opacity=".7"/><circle cx="188" cy="114" r="7" fill="#f4a9c0" opacity=".7"/>
+<path d="M118 108 h-20 M118 116 h-18 M202 108 h20 M202 116 h18" stroke="#2b2148" stroke-width="2" stroke-linecap="round"/>
+<path d="M116 92 C116 40 204 40 204 92" fill="none" stroke="#7a56c8" stroke-width="7" stroke-linecap="round"/>
+<rect x="104" y="84" width="16" height="30" rx="8" fill="#7a56c8"/><rect x="200" y="84" width="16" height="30" rx="8" fill="#7a56c8"/>
+</g>
+<g class="dance" style="animation-delay:.2s">
+<path d="M330 205 C352 205 358 185 345 178" fill="none" stroke="#e59ab5" stroke-width="3" stroke-linecap="round"/>
+<ellipse cx="310" cy="196" rx="24" ry="17" fill="#d9d2e6"/>
+<circle cx="288" cy="184" r="12" fill="#d9d2e6"/>
+<circle cx="292" cy="170" r="9" fill="#f4a9c0"/><circle cx="278" cy="172" r="8" fill="#f4a9c0"/>
+<circle cx="285" cy="183" r="2" fill="#2b2148"/><circle cx="277" cy="188" r="2.5" fill="#2b2148"/>
+</g>
+</svg>
+<p class="note" style="margin:6px 0 12px">පාඩම් අතරේ විනාඩි 5ක Music break එකක්. Playlist එකක් දාලා මේ දෙන්නත් එක්ක ඔයත් තාලෙට හෙමින් නටන්න.</p>
+<button class="ghost" id="musicBtn" aria-pressed="true">Pause the dance</button>
+</div>
+</section>
+
+<section id="chat" aria-labelledby="c">
+<h2 id="c">Talk it out</h2>
+<div class="chat">
+<div class="catwrap">
+<svg viewBox="0 0 220 200" id="talkcat" role="img" aria-label="A friendly cat that talks back to you">
+<ellipse cx="110" cy="188" rx="80" ry="8" fill="var(--line)"/>
+<ellipse cx="110" cy="160" rx="52" ry="34" fill="#b7a4de"/>
+<ellipse cx="110" cy="172" rx="26" ry="20" fill="#e7def7"/>
+<g class="head">
+<polygon points="62,62 68,22 96,48" fill="#b7a4de"/><polygon points="158,62 152,22 124,48" fill="#b7a4de"/>
+<polygon points="70,54 72,34 86,48" fill="#f4a9c0"/><polygon points="150,54 148,34 134,48" fill="#f4a9c0"/>
+<circle cx="110" cy="80" r="50" fill="#b7a4de"/>
+<circle cx="90" cy="76" r="6" fill="#2b2148"/><circle cx="130" cy="76" r="6" fill="#2b2148"/>
+<circle cx="92" cy="74" r="2" fill="#fff"/><circle cx="132" cy="74" r="2" fill="#fff"/>
+<ellipse cx="110" cy="92" rx="6" ry="4" fill="#e86a8a"/>
+<path d="M110 96 v4" stroke="#2b2148" stroke-width="2.5"/>
+<ellipse id="mouth" class="mouth" cx="110" cy="107" rx="9" ry="3" fill="#2b2148"/>
+<circle cx="78" cy="94" r="7" fill="#f4a9c0" opacity=".7"/><circle cx="142" cy="94" r="7" fill="#f4a9c0" opacity=".7"/>
+<path d="M66 88 h-22 M66 96 h-20 M154 88 h22 M154 96 h20" stroke="#2b2148" stroke-width="2" stroke-linecap="round"/>
+</g>
+</svg>
+<div class="bubble" id="bubble" role="status" aria-live="polite">හායි! 👋 මම Kiki. ඔයාගේ හිතේ තියෙන දේ මට කියන්න. Exam, නින්ද, overthinking මොනවා වුණත්.</div>
+</div>
+<div class="chips" id="chips">
+<button class="ghost" data-q="exam stress">Exam stress</button>
+<button class="ghost" data-q="nidi naha">Can't sleep</button>
+<button class="ghost" data-q="overthinking">Overthinking</button>
+<button class="ghost" data-q="deadline">Deadlines</button>
+<button class="ghost" data-q="thanikama">Feeling lonely</button>
+</div>
+<div class="send"><textarea id="q" aria-label="Tell Kiki what is on your mind" placeholder="Kiki ta කියන්න... (සිංහලෙන්, English, නැත්නම් Singlish)"></textarea><button id="sendBtn">Send</button></div>
+<p class="note">Kiki කියන්නේ ලස්සන cat කෙනෙක්. Kiki ඔයාගේ වචන වලට උත්තර දෙන්නේ කලින් හදපු උපදෙස් වලින්. Doctor කෙනෙක් නෙවෙයි. ඔයාගේ දේවල් මේ site එකෙන් පිටතට යන්නේ නෑ.</p>
+<div class="help"><strong>ඉක්මන් උදව්වක් ඕනෑ නම්:</strong> ඔයාව හානි කරගන්න හිතෙනවා නම් හෝ ගොඩක් අමාරුයි නම්, දැන්ම විශ්වාසවන්ත කෙනෙක් එක්ක කතා කරන්න. ශ්‍රී ලංකාවේ mental health helpline <strong>1926</strong> හෝ <strong>1333</strong> අමතන්න.</div>
+</div>
+</section>
+
+<section id="resources" aria-labelledby="r">
+<h2 id="r">Relaxing resources</h2>
+<div class="grid">
+<div class="card">
+<h3>🎵 Study &amp; relax on Spotify</h3>
+<ul class="links">
+<li><a href="https://open.spotify.com/search/lofi%20beats%20study" target="_blank" rel="noopener">Lofi Beats for Studying <span>Listen</span></a></li>
+<li><a href="https://open.spotify.com/search/deep%20focus" target="_blank" rel="noopener">Deep Focus &amp; Brainwave Music <span>Listen</span></a></li>
+<li><a href="https://open.spotify.com/search/rain%20nature%20sounds%20sleep" target="_blank" rel="noopener">Rain &amp; Nature Sounds for Sleep <span>Listen</span></a></li>
+</ul>
+<p class="note">These open Spotify searches. Swap in your favourite playlist links anytime.</p>
+</div>
+<div class="card">
+<h3>📱 Free helpful apps</h3>
+<p><strong>Forest</strong><br>පාඩම් කරන අතරතුර Phone එක පාවිච්චි නොකර Focus වෙන්න.</p>
+<p><strong>Insight Timer</strong><br>Free Meditation සහ Sleep Sounds සඳහා.</p>
+</div>
+</div>
+</section>
+</main>
+<footer><div class="wrap">Take one breath at a time. 🌿</div></footer>
+
+<script>
+(function(){
+var S={get:function(k){try{return localStorage.getItem('ms_'+k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem('ms_'+k,v)}catch(e){}},del:function(k){try{localStorage.removeItem('ms_'+k)}catch(e){}}};
+var fields=document.querySelectorAll('[data-k]');
+fields.forEach(function(el){
+ var v=S.get(el.dataset.k);
+ if(v!==null){if(el.type==='checkbox')el.checked=v==='1';else el.value=v}
+ el.addEventListener('input',function(){S.set(el.dataset.k,el.type==='checkbox'?(el.checked?'1':'0'):el.value)});
+});
+var date=document.getElementById('date');
+var dv=S.get('date');date.value=dv||new Date().toISOString().slice(0,10);
+date.addEventListener('input',function(){S.set('date',date.value)});
+var moods=document.querySelectorAll('.mood'),cm=S.get('mood');
+function setMood(m){moods.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.m===m?'true':'false')});}
+setMood(cm);
+moods.forEach(function(b){b.addEventListener('click',function(){S.set('mood',b.dataset.m);setMood(b.dataset.m)})});
+document.getElementById('clear').addEventListener('click',function(){
+ document.querySelectorAll('.task [data-k], .chk [data-k]').forEach(function(el){if(el.type==='checkbox')el.checked=false;else el.value='';S.del(el.dataset.k)});
+ S.del('mood');setMood(null);
+});
+
+/* save journal + bouquet */
+var dlg=document.getElementById('bouquet');
+document.getElementById('saveJ').addEventListener('click',function(){
+ document.querySelectorAll('[data-k^="j"]').forEach(function(el){S.set(el.dataset.k,el.value)});
+ var t=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+ S.set('jsaved',t);
+ document.getElementById('savedAt').textContent='Saved at '+t;
+ if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');
+});
+document.getElementById('closeB').addEventListener('click',function(){dlg.close?dlg.close():dlg.removeAttribute('open')});
+dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
+var js=S.get('jsaved');if(js)document.getElementById('savedAt').textContent='Last saved at '+js;
+
+var sc=document.getElementById('scene'),mb=document.getElementById('musicBtn');
+mb.addEventListener('click',function(){var p=sc.classList.toggle('paused');mb.textContent=p?'Play the dance':'Pause the dance';mb.setAttribute('aria-pressed',p?'false':'true')});
+/* Kiki the cat */
+var R=[
+ {k:/\bdie\b|\bdying\b|suicide|kill myself|end it all|hurt myself|self.?harm|මැරෙ|මැරි|මැරුණ|ජීවිතේ එපා|maranna|marenna|jeewithe epa/i,crisis:1,a:["මට ඔයා ගැන ගොඩක් සැලකිල්ලක් තියෙනවා. ඔයා දැන් ගොඩක් අමාරු තැනක ඉන්නවා වගේ. කරුණාකරලා දැන්ම ඔයාට විශ්වාස කෙනෙක් (යාළුවෙක්, ගෙදර කෙනෙක්) ළඟට යන්න, නැත්නම් helpline එකක් අමතන්න: 1926 හෝ 1333. ඔයා තනිවෙලා නෑ. 💜"]},
+ {k:/exam|paper|viboga|විභාග|test|quiz/i,a:["Exam එකට කලින් හිත අවුල් වෙන එක ගොඩක් අයට වෙනවා. විනාඩි 25ක් පාඩම්, විනාඩි 5ක් break කියලා කොටස් වලට කඩලා බලන්න. ඊට කලින් 4-7-8 හුස්ම 4 වතාවක් ගන්න, උඩින් තියෙන රවුමෙන්. 🌿","හැමදේම එක පාරටම කරන්න ඕන නෑ. අද පාඩම් ටික අතරින් වැදගත්ම එක තෝරගෙන ඒකෙන් පටන් ගන්න. ඉතිරිය හෙට."]},
+ {k:/sleep|nidi|nindak|nindha|insomnia|නින්ද|නිදි|රෑ/i,a:["නින්ද එන්නේ නැති රෑට phone එක අයින් කරලා හිත හෙමින් සන්සුන් කරන්න. 4-7-8 හුස්ම ගන්න, නැත්නම් මේ page එකේ Rain sounds playlist එක අඩු ශබ්දෙන් දාන්න. 🌧️","ඇඳට යන්න පැයකට කලින් screen එකෙන් අයින් වෙන්න. හෙට කරන්න තියෙන දේවල් කඩදාසියක ලියලා තියලා ඇඳට යන්න. එතකොට හිතට එච්චර බර නෑ."]},
+ {k:/overthink|thinking|hithanawa|hithe|හිතනවා|හිතෙනවා|අවුල්|awul|\bmind\b/i,a:["හිත දුවනකොට 5-4-3-2-1 grounding එක try කරන්න. වටපිට තියෙන දේවල් 5ක් බලලා හිතින් නම් කරන්න. ඒකෙන් හිත දැන් මේ වෙලාවට එනවා. 👀","Journal එකේ ලියන්න: මට පාලනය කරන්න පුළුවන් දේ මොකක්ද, බැරි දේ මොකක්ද? පාලනය කරන්න බැරි දේ පැත්තකට තියලා, පුළුවන් එක ගැන විතරක් හිතන්න."]},
+ {k:/deadline|assignment|submit|due|වැඩ ගොඩක්|assign/i,a:["Deadline ගොඩක් එකට එනකොට බයවෙනවා සාමාන්‍යයි. දැන් වැඩ 3ක් Tracker එකේ ලියන්න: අනිවාර්ය, ලේසි, තව පස්සේ කරන්න. පළවෙනි එකට විනාඩි 25ක් දෙන්න, ඊට පස්සේ break එකක්. 📝","එක එක වැඩේ පොඩි කොටස් වලට කඩන්න. 'Assignment එක ලියනවා' වෙනුවට 'පළවෙනි පේළි 5 ලියනවා' කියලා. පටන් ගන්න එක තමයි අමාරුම."]},
+ {k:/lonely|alone|thanikama|thani|තනි|කවුරුත් නෑ|friends? nae/i,a:["තනියම ඉන්නවා වගේ දැනෙනකොට ඒක ගොඩක් බරයි. ඒක ඔයාට විතරක් නෙවෙයි. යාළුවෙකුට පොඩි message එකක් දාන්න, 'කොහොමද?' කියලා විතරක් වුණත් ඇති. මම දැන් ඔයා එක්ක ඉන්නවා. 💜"]},
+ {k:/tired|exhaust|hemb|හෙම්බිරි|මහන්සි|burnout|energy/i,a:["මහන්සි වෙලා නම් ඒක ඔයා හොඳට උත්සාහ කරලා තියෙන බවට සාක්ෂියක්. වතුර වීදුරුවක් බීලා, විනාඩි 15ක් එළිමහනේ ඇවිදලා එන්න. ඒකෙන් හිත හොඳටම නැවුම් වෙනවා. 🌤️"]},
+ {k:/anxious|anxiety|panic|scared|bayai|\bbay|බය|කලබල|kalabala|nervous/i,a:["බයක් දැනෙනකොට ඉක්මනින් හුස්ම ගන්න එක හොඳ නෑ. දැන් මගේ එක්ක හෙමින්: ඇතුළට 4, තද කරගෙන 7, පිට කරන්න 8. උඩින් තියෙන රවුම බලන්න. ඔයාට පුළුවන්. 🫧"]},
+ {k:/\bsad\b|\bcry|\bduka|දුක|අඬ|depress/i,a:["දුක දැනෙනවා නම් ඒක හංගන්න ඕන නෑ. ඒ ගැන Journal එකේ ලියන්න. ඒක ලියාගෙන යනකොට හිතට ටිකක් සැහැල්ලුවක් දැනෙනවා. ඒක ගොඩක් දවසක් තියෙනවා නම් counsellor කෙනෙක් එක්ක කතා කරන්න. 💜"]},
+ {k:/thanks|thank you|thx|ස්තුති|sthuti|hodai|හොඳයි|nice|good/i,a:["ඔයාට හිතට හොඳක් දැනුණා නම් මටත් සතුටුයි! 😸 ඕන වෙලාවක ආයෙ එන්න.","ඔයා ගැන ආඩම්බරයි. පොඩි පොඩි steps තමයි ලොකු වෙනස හදන්නේ. 🌸"]},
+ {k:/\bhi\b|\bhello\b|\bhey\b|\bhari\b|හායි|හලෝ|ආයුබෝවන්/i,a:["හායි! 😺 අද දවස කොහොමද? මොනවා හරි හිතේ තියෙනවා නම් මට කියන්න."]}
+];
+var DEF=["මට ඒක හොඳට තේරුණේ නෑ, ඒත් ඔයා කියපු දේ ගැන මම සැලකිලිමත්. ඔයාට Exam, නින්ද, Overthinking, Deadlines වගේ මොකක් ගැනද වැඩිපුර දැනෙන්නේ? පහළ button එකක් ඔබන්නත් පුළුවන්. 😺","ටිකක් විස්තර කරන්න පුළුවන්ද? නැත්නම් දැන් විනාඩියක් හුස්ම ගන්න, ඊට පස්සේ ආයෙ කියන්න."];
+var bub=document.getElementById('bubble'),tc=document.getElementById('talkcat'),qEl=document.getElementById('q'),sBtn=document.getElementById('sendBtn'),ty=null,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function say(t){
+ clearInterval(ty);
+ if(rm){bub.textContent=t;return}
+ var i=0;bub.textContent='';tc.classList.add('talking');
+ ty=setInterval(function(){i++;bub.textContent=t.slice(0,i);if(i>=t.length){clearInterval(ty);tc.classList.remove('talking')}},28);
+}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function reply(text){
+ text=(text||'').trim();if(!text)return;
+ qEl.value='';
+ for(var i=0;i<R.length;i++){if(R[i].k.test(text)){say(pick(R[i].a));return}}
+ say(pick(DEF));
+}
+sBtn.addEventListener('click',function(){reply(qEl.value)});
+qEl.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();reply(qEl.value)}});
+document.querySelectorAll('#chips button').forEach(function(b){b.addEventListener('click',function(){reply(b.dataset.q)})});
+/* 4-7-8 breathing */
+var orb=document.getElementById('orb'),txt=document.getElementById('orbText'),btn=document.getElementById('go'),cnt=document.getElementById('count');
+var running=false,timer=null,rounds=0;
+function label(a,b){txt.innerHTML=a+'<small>'+b+'</small>'}
+function phase(scale,secs,a,b){orb.style.transitionDuration=secs+'s';orb.style.transform='scale('+scale+')';var n=secs;label(a,b+' '+n);
+ return new Promise(function(res){timer=setInterval(function(){n--;if(n>0)label(a,b+' '+n);else{clearInterval(timer);res()}},1000)})}
+async function run(){
+ running=true;btn.textContent='Stop';rounds=0;
+ while(running&&rounds<4){
+  await phase(1.25,4,'Inhale','හුස්ම ගන්න');if(!running)break;
+  await phase(1.25,7,'Hold','තද කරගන්න');if(!running)break;
+  await phase(.6,8,'Exhale','පිට කරන්න');if(!running)break;
+  rounds++;cnt.textContent='Rounds done: '+rounds+' of 4';
+ }
+ stop(rounds>=4);
+}
+function stop(done){running=false;clearInterval(timer);btn.textContent=done?'Go again':'Start breathing';orb.style.transitionDuration='2s';orb.style.transform='scale(.6)';label(done?'Well done':'4-7-8',done?'හොඳයි, දැන් සන්සුනි':'ආරම්භ කරන්න')}
+btn.addEventListener('click',function(){if(running){stop(false)}else{cnt.textContent='Rounds done: 0 of 4';run()}});
+})();
+</script>
+</body>
+</html>
