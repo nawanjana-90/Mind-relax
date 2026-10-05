@@ -22,9 +22,12 @@ a{color:var(--accent)}
 :focus-visible{outline:3px solid var(--warm);outline-offset:3px;border-radius:6px}
 .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
 nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
-nav a{white-space:nowrap;text-decoration:none;color:var(--muted);padding:6px 14px;border-radius:99px;font-size:.95rem}
-nav a:hover{background:var(--surface);color:var(--ink)}
+nav .bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;padding-top:8px;padding-bottom:8px}
+nav .brand{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:1.1rem;color:var(--ink);text-decoration:none}
+nav .menu{display:flex;gap:6px;align-items:center}
+nav .menu a{white-space:nowrap;text-decoration:none;color:var(--muted);padding:6px 14px;border-radius:99px;font-size:.95rem}
+nav .menu a:hover,nav .menu a:focus-visible{background:var(--surface);color:var(--ink)}
+#navToggle{display:none;padding:10px 18px;font-size:.95rem}
 .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:56px 0 40px}
 .sub{color:var(--muted);font-size:1.15rem;max-width:34em}
 blockquote{margin:24px 0;padding-left:16px;border-left:4px solid var(--warm);font-family:"Fraunces",serif;font-size:1.2rem;font-style:italic}
@@ -108,16 +111,28 @@ dialog h3{margin:8px 0 4px}dialog p{margin:0 0 18px;color:var(--muted)}
 @media (max-width:560px){.catwrap{flex-direction:column;text-align:left}.bubble::before{display:none}}
 @media (prefers-reduced-motion:reduce){.talking .head,.talking .mouth{animation:none}}
 footer{padding:36px 0 48px;color:var(--muted);text-align:center;border-top:1px solid var(--line)}
-@media (max-width:760px){.hero,.grid{grid-template-columns:1fr}.task{grid-template-columns:auto 1fr}.task input[type=text]:last-child{grid-column:2}}
+@media (max-width:760px){
+ .hero,.grid{grid-template-columns:1fr}
+ .task{grid-template-columns:auto 1fr}
+ .task input[type=text]:last-child{grid-column:2}
+ #navToggle{display:inline-block}
+ nav .menu{display:none;flex-direction:column;align-items:stretch;gap:6px;flex-basis:100%;max-height:70vh;overflow-y:auto;padding-bottom:6px}
+ nav .menu.open{display:flex}
+ nav .menu a{white-space:normal;padding:13px 16px;border-radius:12px;background:var(--surface);border:1px solid var(--line);color:var(--ink);font-size:1rem}
+}
 @media (prefers-reduced-motion:reduce){.orb{transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<nav aria-label="Sections"><div class="wrap">
+<nav aria-label="Sections"><div class="wrap bar">
+<a class="brand" href="#top">🌿 Mindful Student</a>
+<button class="ghost" id="navToggle" aria-expanded="false" aria-controls="menu">☰ Menu</button>
+<div class="menu" id="menu">
 <a href="#breathe">Relief techniques</a><a href="#tracker">Daily tracker</a><a href="#journal">Journal</a><a href="#music">Music corner</a><a href="#chat">Talk it out</a><a href="#resources">Resources</a>
+</div>
 </div></nav>
 
-<main class="wrap">
+<main class="wrap" id="top">
 <header class="hero">
 <div>
 <h1>Mindful Student</h1>
@@ -314,6 +329,14 @@ footer{padding:36px 0 48px;color:var(--muted);text-align:center;border-top:1px s
 
 <script>
 (function(){
+/* mobile nav menu */
+var navT=document.getElementById('navToggle'),menu=document.getElementById('menu');
+function navSet(o){menu.classList.toggle('open',o);navT.setAttribute('aria-expanded',o?'true':'false');navT.textContent=o?'✕ Close':'☰ Menu'}
+navT.addEventListener('click',function(){navSet(!menu.classList.contains('open'))});
+menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navSet(false)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')navSet(false)});
+window.addEventListener('resize',function(){if(window.innerWidth>760)navSet(false)});
+
 var S={get:function(k){try{return localStorage.getItem('ms_'+k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem('ms_'+k,v)}catch(e){}},del:function(k){try{localStorage.removeItem('ms_'+k)}catch(e){}}};
 var fields=document.querySelectorAll('[data-k]');
 fields.forEach(function(el){
